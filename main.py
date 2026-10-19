@@ -26,7 +26,7 @@ def greeting(name: str):
 
     return {
         "message": f"Hello, {name}",
-        "developer": "Dev2",
+        "developer": "Dev1",
         "hostname": hostname,
         "IP": ip_address
     }
