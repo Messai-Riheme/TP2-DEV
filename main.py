@@ -1,4 +1,4 @@
-
+import socket
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -16,21 +16,13 @@ def addition(a: int, b: int):
         "developer": "Dev1"
     }
 
-
 @app.get("/greeting")
 def greeting(name: str):
-    # Récupérer le nom de la machine (hostname)
     hostname = socket.gethostname()
-
-    # Récupérer l'adresse IP locale connectée au réseau
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        s.connect(("8.8.8.8", 80))
-        ip_address = s.getsockname()[0]
+        ip_address = socket.gethostbyname(hostname)
     except Exception:
         ip_address = "127.0.0.1"
-    finally:
-        s.close()
 
     return {
         "message": f"Hello, {name}",
