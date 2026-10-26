@@ -30,3 +30,11 @@ def greeting(name: str):
         "hostname": hostname,
         "IP": ip_address
     }
+@app.post("/divide")
+def divide(a: float, b: float):
+    if b == 0:
+        return {"error": "Division par zéro impossible"}
+    return {
+        "result a/b=": a / b,
+        "developer": "Dev2"
+    }
