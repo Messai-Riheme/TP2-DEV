@@ -1,6 +1,7 @@
 import socket
-from fastapi import FastAPI
 
+from fastapi import FastAPI
+import socket
 app = FastAPI()
 
 
@@ -30,6 +31,16 @@ def greeting(name: str):
         "hostname": hostname,
         "IP": ip_address
     }
+
+
+
+@app.get("/multiply") # ou POST selon tes préférences de tests
+@app.post("/multiply")
+def multiply(a: int = 0, b: int = 0):
+    return {
+        "result a*b=": a * b,
+        "developer": "Dev1"
+
 @app.post("/divide")
 def divide(a: float, b: float):
     if b == 0:
@@ -37,4 +48,5 @@ def divide(a: float, b: float):
     return {
         "result a/b=": a / b,
         "developer": "Dev2"
+
     }
