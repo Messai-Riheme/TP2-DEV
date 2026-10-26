@@ -1,6 +1,5 @@
-
 from fastapi import FastAPI
-
+import socket
 app = FastAPI()
 
 
@@ -37,4 +36,13 @@ def greeting(name: str):
         "developer": "Dev2",
         "hostname": hostname,
         "IP": ip_address
+    }
+
+
+@app.get("/multiply") # ou POST selon tes préférences de tests
+@app.post("/multiply")
+def multiply(a: int = 0, b: int = 0):
+    return {
+        "result a*b=": a * b,
+        "developer": "Dev1"
     }
