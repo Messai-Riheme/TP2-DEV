@@ -2,11 +2,16 @@
 
 import socket
 from fastapi import FastAPI
+
 app = FastAPI()
+
+
 @app.get("/")
 def home():
     """Retourne un message de bienvenue."""
     return {"message": "it works !"}
+
+
 @app.get("/addition")
 def addition(a: int, b: int):
     """Retourne la somme de deux entiers."""
@@ -14,6 +19,8 @@ def addition(a: int, b: int):
         "result a+b=": a + b,
         "developer": "Dev1",
     }
+
+
 @app.get("/soustraction")
 def soustraction(a: int, b: int):
     """Retourne la différence de deux entiers."""
@@ -21,6 +28,8 @@ def soustraction(a: int, b: int):
         "result a-b=": a - b,
         "developer": "Dev1",
     }
+
+
 @app.get("/greeting")
 def greeting(name: str):
     """Retourne un message de salutation avec le nom d'hôte et l'adresse IP."""
@@ -36,6 +45,8 @@ def greeting(name: str):
         "hostname": hostname,
         "IP": ip_address,
     }
+
+
 @app.get("/multiply")
 @app.post("/multiply")
 def multiply(a: int = 0, b: int = 0):
@@ -44,6 +55,8 @@ def multiply(a: int = 0, b: int = 0):
         "result a*b=": a * b,
         "developer": "Dev1",
     }
+
+
 @app.post("/divide")
 def divide(a: float, b: float):
     """Retourne le quotient de deux flottants ou un message d'erreur si b vaut 0."""

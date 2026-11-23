@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 image: python:3.12-slim
 
 stages:
@@ -14,6 +15,15 @@ pylint:
 
 run-test:
   stage: test
+=======
+image: python:3.11-slim
+
+stages:
+  - test
+
+run-test:
+  stage: test
+  before_script:
   script:
     - pytest -v --junitxml=report.xml
   artifacts:
@@ -21,6 +31,7 @@ run-test:
     reports:
       junit: report.xml
     paths:
+<<<<<<< HEAD
       - report.xml
     expire_in: 1 week
 
@@ -37,3 +48,4 @@ calculate-coverage:
     paths:
       - coverage.xml
     expire_in: 1 week
+
