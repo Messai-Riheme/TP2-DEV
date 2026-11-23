@@ -1,0 +1,17 @@
+image: python:3.11-slim
+
+stages:
+  - test
+
+run-test:
+  stage: test
+  before_script:
+    - pip install fastapi pytest httpx
+  script:
+    - pytest -v --junitxml=report.xml
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+    paths:
+      - report.xml
